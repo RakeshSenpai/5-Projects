@@ -27,7 +27,7 @@ body{
     padding: 32px 0 60px;
 }
 
-.container :where(.app-header, .suggestion, .prompt-container, .disclaimer-text){
+.container :where(.app-header, .suggestion, .prompt-wraper, .disclaimer-text){
     margin: 0 auto;
     width: 100%;
     padding: 0 20px;
@@ -46,3 +46,125 @@ body{
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+.app-header .sub-heading{
+    font-size: 2.6rem;
+    margin-top: -5px;
+    color: var(--subheading-color);
+}
+
+
+/* Suggestion list stylings */
+
+.container .suggestion{
+    display: flex;
+    gap: 15px;
+    margin-top: 9.5vh;
+    list-style-type: none;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.suggestion .suggestion-item{
+    background: var(--secondary-color);
+    width: 230px;
+    padding: 18px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-direction: column;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+ .suggestion-item:hover{
+    background: var(--seconday-hover-color);
+ }
+
+ .suggestion-item .text{
+    font-size: 1.1rem;
+ }
+
+ .suggestion-item span{
+    height: 45px;
+    width: 45px;
+    margin-top: 35px;
+    display: flex;
+    align-self: flex-end;
+    align-items: center;
+    justify-content: center;
+    border-radius : 50%;
+    color: #1d7efd;
+    background: var(--primary-color);
+ }
+
+ .suggestion-item:nth-child(2) span{
+    color: #28a745;
+ }
+ .suggestion-item:nth-child(3) span{
+    color: #ffc107;
+ }
+ .suggestion-item:nth-child(4 ) span{
+    color: #6f42c1;
+ } 
+
+ /* Prompt container */
+
+ .prompt-container{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 16px 0;
+    background: var(--primary-color);
+
+ }
+
+ .prompt-container :where(.prompt-wraper, .prompt-form, .prompt-actions){
+    display: flex;
+    gap:12px;
+    height: 56px;
+    align-items: center;
+ }
+
+ .prompt-form{
+    width: 100%;
+    height: 100%;
+    border-radius: 130px;
+    background: var(--secondary-color);
+ }
+
+ .prompt-form .prompt-input{
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1rem;
+    padding-left: 24px;
+     color: var(--text-color);
+ }
+
+ .prompt-input::placeholder{
+    color: var(--placeholder-color);
+ }
+
+ .prompt-wraper button{
+    height: 100%;
+    width: 56px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    background: var(--secondary-color);
+    color: var(--text-color);
+    flex-shrink: 0;
+    font-size: 1.4rem;
+    transition: 0.3s ease;
+ } 
+
+  .prompt-wraper button:hover{
+     background: var(--seconday-hover-color) ;
+  }
+
