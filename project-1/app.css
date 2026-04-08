@@ -10,6 +10,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    background: #4a0505;
 }
 
 .calender-container{
@@ -19,5 +20,7 @@ body{
     border-radius: 12px;
     background: #369dec;
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
