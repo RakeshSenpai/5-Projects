@@ -4,4 +4,16 @@ const dayNumber = document.getElementById('day-number')
 const yearElem = document.getElementById('year')
 
 const date = new Date()
-console.log(date)
+const month = date.getMonth()
+
+monthName.innerText = date.toLocaleDateString('en', {
+    month: 'long'
+})
+
+dayName.innerText = date.toLocaleString('en' , {
+    weekday: 'long'
+})
+
+dayNumber.innerText = date.getDate()
+yearElem.innerText = date.getFullYear()
+ 
