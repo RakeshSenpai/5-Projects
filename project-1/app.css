@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calender-container{
+    padding: 1.2rem 1.4rem;
+    height: 250px;
+    width: 300px;
+    border-radius: 12px;
+    background: #369dec;
+    display: flex;
+    justify-content: space-evenly;
+}

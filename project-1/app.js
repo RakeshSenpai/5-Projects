@@ -1,3 +1,7 @@
 const monthName = document.getElementById('month-name')
 const dayName = document.getElementById('day-name')
 const dayNumber = document.getElementById('day-number')
+const yearElem = document.getElementById('year')
+
+const date = new Date()
+console.log(date)
