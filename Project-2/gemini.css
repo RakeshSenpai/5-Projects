@@ -27,7 +27,7 @@ body{
     padding: 32px 0 60px;
 }
 
-.container :where(.app-header, .suggestion, .prompt-wraper, .disclaimer-text){
+.container :where(.app-header, .suggestion, .message, .prompt-wraper, .disclaimer-text){
     margin: 0 auto;
     width: 100%;
     padding: 0 20px;
@@ -79,6 +79,10 @@ body{
     transition: 0.3s ease;
 }
 
+.container :is(.app-header, .suggestion){
+    display: none;
+}
+
  .suggestion-item:hover{
     background: var(--seconday-hover-color);
  }
@@ -109,6 +113,55 @@ body{
  .suggestion-item:nth-child(4 ) span{
     color: #6f42c1;
  } 
+
+
+ /* Chats container stylings */
+
+ .chat-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+ }
+
+ .chat-container .message{
+    display: flex;
+    gap: 11px;
+    align-items: center; 
+ }
+
+ .chat-container .bot-message .avatar{
+    height: 43px;
+    width: 43px;
+    padding: 6px;
+    flex-shrink: 0;
+    align-self: flex-start;
+    margin-right: -7px;
+    border-radius:50%;
+    background: var(--secondary-color);
+    border: 1px solid var(--seconday-hover-color);
+ }
+
+ .chat-container .message .message-text{
+    padding: 3px 16px;
+    word-wrap: break-word;
+    white-space: pre-line;
+ }
+
+  .chat-container .bot-message{
+    margin: 9px auto;
+  }
+
+ .chat-container .user-message{
+    flex-direction: column;
+    align-items: flex-end;
+ }
+
+ .chat-container .user-message .message-text{
+     padding: 12px 16 px;
+     max-width: 75%;
+     border-radius: 13px 13px 3px 13px;
+     background: var(--secondary-color);
+ }
 
  /* Prompt container */
 
@@ -168,3 +221,34 @@ body{
      background: var(--seconday-hover-color) ;
   }
 
+.prompt-actions{
+    gap: 5px;
+    margin-right: 7px;
+}
+
+.prompt-actions button{
+    height: 45px;
+    width: 45px;
+}
+
+#send-prompt-btn{
+    background: #1d7efd;
+    color: #ffff;
+    display: none;
+}
+.prompt-input:valid ~ .prompt-actions #send-prompt-btn{
+    display: block;
+}
+
+#send-prompt-btn:hover{
+    background: #0264e3;
+}
+
+.disclaimer-text{
+    text-align: center;
+    font-size: 0.9rem;
+    padding: 16px 20px 0;
+    color: var(--placeholder-color);
+}
+
+ 
