@@ -1,6 +1,6 @@
 const promptForm = document.querySelector('.prompt-form')
 const promptInput = promptForm.querySelector('.prompt-input')
-const chatContainer = document.querySelector(". chat-container")
+const chatContainer = document.querySelector(".chat-container")
 
 let userMessage = '';
 
@@ -18,7 +18,7 @@ const handleFromSubmit = (e) => {
     const userMsgHtml = `<p class="message-text"></p>`
     const userMsgDiv = createMsgElem(userMsgHtml, "user-message")
 
-    userMsgDiv.querySelector('message-text').textContent = userMessage
+    userMsgDiv.querySelector('.message-text').textContent = userMessage
     chatContainer.appendChild(userMsgDiv)
 }
 
