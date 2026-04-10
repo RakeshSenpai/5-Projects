@@ -20,6 +20,7 @@ const handleFromSubmit = (e) => {
 
     userMsgDiv.querySelector('.message-text').textContent = userMessage
     chatContainer.appendChild(userMsgDiv)
+    console.log('submit')
 }
 
 promptForm.addEventListener('submit' , handleFromSubmit)
