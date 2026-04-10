@@ -20,7 +20,15 @@ const handleFromSubmit = (e) => {
 
     userMsgDiv.querySelector('.message-text').textContent = userMessage
     chatContainer.appendChild(userMsgDiv)
-    console.log('submit')
+
+    setTimeout(() => {
+        const userMsgHtml = `<img src="resources/gemini-chatbot-logo.svg" class="avatar"><p class="message-text"></p>`
+        const userMsgDiv = createMsgElem(userMsgHtml, "user-message")
+
+        userMsgDiv.querySelector('.message-text').textContent = userMessage
+        chatContainer.appendChild(userMsgDiv)
+         
+    }, 600);
 }
 
 promptForm.addEventListener('submit' , handleFromSubmit)
