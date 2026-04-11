@@ -33,3 +33,4 @@ const handleFromSubmit = (e) => {
 }
 
 promptForm.addEventListener('submit' , handleFromSubmit)
+console.log('submit')
