@@ -1,18 +1,22 @@
-const promptForm = document.querySelector('.prompt-form')
-const promptInput = promptForm.querySelector('.prompt-input')
-const chatContainer = document.querySelector(".chat-container")
+const promptForm = document.querySelector('.prompt-form');
+const promptInput = promptForm.querySelector('.prompt-input');
+const chatContainer = document.querySelector(".chat-container");
 
 let userMessage = '';
 
 const createMsgElem = (content, ...classes) => {
     const div = document.createElement('div')
     div.classList.add('message' , ...classes)
-    div.innerHTML = content
+    div.innerHTML = content;
     return div;
 }
 
-const generateResponse = () => {
-    
+const generateResponse = async () => {
+    try {
+        const respons = await fetch();
+    } catch (error) {
+        
+    }    
 }
 
 const handleFromSubmit = (e) => {
@@ -38,4 +42,4 @@ const handleFromSubmit = (e) => {
     }, 600);
 }
 
-promptForm.addEventListener('submit' , handleFromSubmit)
+promptForm.addEventListener('submit' , handleFromSubmit);
