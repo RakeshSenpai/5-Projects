@@ -11,6 +11,10 @@ const createMsgElem = (content, ...classes) => {
     return div;
 }
 
+const generateResponse = () => {
+    
+}
+
 const handleFromSubmit = (e) => {
     e.preventDefault()
     userMessage = promptInput.value.trim()
@@ -24,11 +28,13 @@ const handleFromSubmit = (e) => {
     userMsgDiv.querySelector('.message-text').textContent = userMessage
     chatContainer.appendChild(userMsgDiv)
 
+    // Gemini avatar set time out
+
     setTimeout(() => {
         const botMsgHtml = `<img src="resources/gemini-chatbot-logo.svg" class="avatar"><p class="message-text">Just a sec..</p>`
         const botMsgDiv = createMsgElem(botMsgHtml, "bot-message", "loading")
         chatContainer.appendChild(botMsgDiv)
-         
+         generateResponse()
     }, 600);
 }
 
