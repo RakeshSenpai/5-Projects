@@ -13,7 +13,8 @@ const createMsgElem = (content, ...classes) => {
     return div;
 }
 
-const generateResponse = async () => {
+const generateResponse = async (botMsgDiv) => {
+    const textElement = botMsgDiv.querySelector(".message-text")
     chatHistory.push({
         role: "user",
         parts: [{text : userMessage}]
@@ -27,7 +28,8 @@ const generateResponse = async () => {
 
         const data = await respons.json()
         if(!respons.ok) throw new Error(data.error.message)
-            console.log(data) 
+        const responseText = data.candidates[0].content.parts[0].text.replace(/\*\*([^*]+)\*\*/g, "$1").trim()
+        textElement.textContent = responseText;
 
     } catch (error) {
         console.log(error)
@@ -53,7 +55,7 @@ const handleFromSubmit = (e) => {
         const botMsgHtml = `<img src="resources/gemini-chatbot-logo.svg" class="avatar"><p class="message-text">Just a sec..</p>`
         const botMsgDiv = createMsgElem(botMsgHtml, "bot-message", "loading")
         chatContainer.appendChild(botMsgDiv)
-         generateResponse()
+         generateResponse(botMsgDiv)
     }, 600);
 }
 
