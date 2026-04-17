@@ -20,7 +20,7 @@ const generateResponse = async (botMsgDiv) => {
         parts: [{text : userMessage}]
     })
     try {
-        const respons = await fetch(API_URL , {
+        const respons = await fetch(API_URL, {
             method: "POST",
             headers: {"Content-Type" : "application/json"},
             body: JSON.stringify({contents : chatHistory})
@@ -28,6 +28,7 @@ const generateResponse = async (botMsgDiv) => {
 
         const data = await respons.json()
         if(!respons.ok) throw new Error(data.error.message)
+            console.log(data)
         const responseText = data.candidates[0].content.parts[0].text.replace(/\*\*([^*]+)\*\*/g, "$1").trim()
         textElement.textContent = responseText;
 
