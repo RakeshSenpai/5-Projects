@@ -1,7 +1,7 @@
 const promptForm = document.querySelector('.prompt-form');
 const promptInput = promptForm.querySelector('.prompt-input');
 const chatContainer = document.querySelector(".chat-container");
-const API_KEY = 'AIzaSyCk768keHxbOP7E2TZ9a-zeRw1lJ47BBGI'
+const API_KEY = 'AIzaSyCFIXOY9MMbTO0EJoRYPxCmz0c1iAJCOes'
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${API_KEY}`
 
 let userMessage = '';
