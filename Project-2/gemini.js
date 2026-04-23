@@ -58,6 +58,8 @@ const handleFromSubmit = (e) => {
         chatContainer.appendChild(botMsgDiv)
          generateResponse(botMsgDiv)
     }, 600);
+
+    console.log(botMsgHtml)
 }
 
 promptForm.addEventListener('submit' , handleFromSubmit);
