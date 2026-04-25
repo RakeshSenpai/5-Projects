@@ -60,7 +60,6 @@ const handleFromSubmit = (e) => {
     }, 600);
 
     console.log(botMsgHtml)
-    console.log('hellpw')
 }
 
 promptForm.addEventListener('submit' , handleFromSubmit);
