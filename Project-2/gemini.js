@@ -20,9 +20,12 @@ const typingEffects = (text, textElement, botMsgDiv) => {
 
     const typingInterval = setInterval(() => {
         if(wordIndex < words.length){
-            textElement.textContent += 
+            textElement.textContent += (wordIndex === 0 ? "" : "") + words[wordIndex++];
+            botMsgDiv.classList.remove("loading")
+        }else{
+             clearInterval(typingInterval)
         }
-    })
+    }, 40)
 }
 
 const generateResponse = async (botMsgDiv) => {
