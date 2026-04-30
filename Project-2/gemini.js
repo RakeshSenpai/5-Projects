@@ -13,6 +13,18 @@ const createMsgElem = (content, ...classes) => {
     return div;
 }
 
+const typingEffects = (text, textElement, botMsgDiv) => {
+    textElement.textContent = "";
+    const words = text.split();
+    let wordIndex = 0;
+
+    const typingInterval = setInterval(() => {
+        if(wordIndex < words.length){
+            textElement.textContent += 
+        }
+    })
+}
+
 const generateResponse = async (botMsgDiv) => {
     const textElement = botMsgDiv.querySelector(".message-text")
     chatHistory.push({
@@ -30,7 +42,7 @@ const generateResponse = async (botMsgDiv) => {
         if(!respons.ok) throw new Error(data.error.message)
             console.log(data)
         const responseText = data.candidates[0].content.parts[0].text.replace(/\*\*([^*]+)\*\*/g, "$1").trim()
-        textElement.textContent = responseText;
+        typingEffects(responseText, textElement, botMsgDiv)
 
     } catch (error) {
         console.log(error)
