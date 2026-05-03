@@ -230,7 +230,7 @@ body{
     transition: 0.3s ease;
  } 
 
-  .prompt-wraper button:hover{
+  .prompt-wraper :is(button:hover, .file-icon, #cencel-file-btn){
      background: var(--seconday-hover-color) ;
   }
 
@@ -239,9 +239,28 @@ body{
     margin-right: 7px;
 }
 
-.prompt-actions button{
+.prompt-wraper .prompt-actions :where(.file-upload-wraper, button, img){
+    position: relative;
     height: 45px;
     width: 45px;
+}
+
+.prompt-actions .file-upload-wraper :where(button, img){
+    position: absolute;
+    object-fit: cover;
+    border-radius: 50%;
+    display: none;
+}
+
+.prompt-form .file-upload-wraper #add-file-btn, 
+.prompt-form .file-upload-wraper.active.img-attached img, 
+.prompt-form .file-upload-wraper.active.file-attached .file-icon, 
+.prompt-form .file-upload-wraper.active:hover #cencel-file-btn{
+    display: block;
+}
+
+.prompt-form .file-upload-wraper.active #add-file-btn{
+    display: none;
 }
 
 #send-prompt-btn{
@@ -256,6 +275,15 @@ body{
 #send-prompt-btn:hover{
     background: #0264e3;
 }
+
+
+.prompt-form #cencel-file-btn{
+    color: #d62939;
+}
+.prompt-form .file-icon{
+    color: #1d7def;
+}
+
 
 .disclaimer-text{
     text-align: center;
