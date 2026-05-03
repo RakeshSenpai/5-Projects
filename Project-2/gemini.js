@@ -4,12 +4,14 @@ const fileInput = promptForm.querySelector('#file-input');
 const fileUploadWraper = promptForm.querySelector('.file-upload-wraper');
 const container = document.querySelector(".container");
 const chatContainer = document.querySelector(".chat-container");
-const API_KEY = 'AIzaSyCJT9qHo_VvALfdxszl7hRerdTIVxzRR_o';
+const API_KEY = 'AIzaSyDsSzGnvdVq7To0nJXM8wi3ySB6wctiFl0';
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${API_KEY}`
 
-let userMessage = '';
 const chatHistory = []; 
-const createMsgElem = (content, ...classes) => {
+const userData = {message: "" , file: {}}
+
+
+const createMsgElem = (content, ...classes) => { 
     const div = document.createElement('div')
     div.classList.add('message' , ...classes)
     div.innerHTML = content;
@@ -38,7 +40,7 @@ const generateResponse = async (botMsgDiv) => {
     const textElement = botMsgDiv.querySelector(".message-text")
     chatHistory.push({
         role: "user",
-        parts: [{text : userMessage}]
+        parts: [{text : userData.message}, ...(userData.file.data ? [{ inline_data: (({fileName, isImage, ...rest}) => rest)(userData.file) }] : [])]
     })
     try {
         const respons = await fetch(API_URL, {
@@ -53,6 +55,9 @@ const generateResponse = async (botMsgDiv) => {
         const responseText = data.candidates[0].content.parts[0].text.replace(/\*\*([^*]+)\*\*/g, "$1").trim()
         typingEffects(responseText, textElement, botMsgDiv)
 
+            chatHistory.push({role: "model", parts: [{text : responseText}] })
+            console.log(chatHistory)
+
     } catch (error) {
         console.log(error)
     }    
@@ -60,10 +65,11 @@ const generateResponse = async (botMsgDiv) => {
 
 const handleFromSubmit = (e) => {
     e.preventDefault()
-    userMessage = promptInput.value.trim()
+    const userMessage = promptInput.value.trim()
     if(!userMessage) return;
 
     promptInput.value = "";
+    userData.message = userMessage;
 
     const userMsgHtml = `<p class="message-text"></p>`
     const userMsgDiv = createMsgElem(userMsgHtml, "user-message")
@@ -94,9 +100,17 @@ fileInput.addEventListener('change' , () => {
 
     reader.onload = (e) => {
         fileInput.value = "";
+
+        const base64String = e.target.result.split(",")[1]
         fileUploadWraper.querySelector('.file-preview').src = e.target.result;
         fileUploadWraper.classList.add('active' , isImage ? "img-attached" : "file-attached")
+
+        userData.file = {fileName : file.name,  data: base64String, mime_type: file.type, isImage}
     }
+})
+
+document.querySelector('#cencel-file-btn').addEventListener('click' , () => {
+    fileUploadWraper.classList.remove('active', "img-attached" , "file-attached")
 })
 
 promptForm.addEventListener('submit' , handleFromSubmit);
