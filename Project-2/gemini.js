@@ -1,7 +1,8 @@
 const promptForm = document.querySelector('.prompt-form');
 const promptInput = promptForm.querySelector('.prompt-input');
+const container = document.querySelector(".container");
 const chatContainer = document.querySelector(".chat-container");
-const API_KEY = 'AIzaSyBY_QFIGRAV-DG_55RSY-XfDeIv_L-uArg';
+const API_KEY = 'AIzaSyCJT9qHo_VvALfdxszl7hRerdTIVxzRR_o';
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${API_KEY}`
 
 let userMessage = '';
@@ -13,6 +14,8 @@ const createMsgElem = (content, ...classes) => {
     return div;
 }
 
+const  scrollToBottom = () => container.scrollTo({top: container.scrollHeight, behavior : "smooth"});
+
 const typingEffects = (text, textElement, botMsgDiv) => {
     textElement.textContent = "";
     const words = text.split();
@@ -22,6 +25,7 @@ const typingEffects = (text, textElement, botMsgDiv) => {
         if(wordIndex < words.length){
             textElement.textContent += (wordIndex === 0 ? "" : "") + words[wordIndex++];
             botMsgDiv.classList.remove("loading")
+            scrollToBottom();
         }else{
              clearInterval(typingInterval)
         }
@@ -64,6 +68,7 @@ const handleFromSubmit = (e) => {
 
     userMsgDiv.querySelector('.message-text').textContent = userMessage
     chatContainer.appendChild(userMsgDiv)
+     scrollToBottom()
 
     // Gemini avatar set time out
 
@@ -71,6 +76,7 @@ const handleFromSubmit = (e) => {
         const botMsgHtml = `<img src="resources/gemini-chatbot-logo.svg" class="avatar"><p class="message-text">Just a sec..</p>`
         const botMsgDiv = createMsgElem(botMsgHtml, "bot-message", "loading")
         chatContainer.appendChild(botMsgDiv)
+         scrollToBottom()
          generateResponse(botMsgDiv)
     }, 600);
 

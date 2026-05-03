@@ -24,7 +24,10 @@ body{
 }
 
 .container{
+    overflow-y: auto;
+    max-height: calc(100vh - 127px);
     padding: 32px 0 60px;
+    scrollbar-color: var(--scrollbar-color) transparent;
 }
 
 .container :where(.app-header, .suggestion, .message, .prompt-wraper, .disclaimer-text){
