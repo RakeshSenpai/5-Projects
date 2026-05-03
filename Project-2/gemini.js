@@ -1,5 +1,7 @@
 const promptForm = document.querySelector('.prompt-form');
 const promptInput = promptForm.querySelector('.prompt-input');
+const fileInput = promptForm.querySelector('#file-input');
+const fileUploadWraper = promptForm.querySelector('.file-upload-wraper');
 const container = document.querySelector(".container");
 const chatContainer = document.querySelector(".chat-container");
 const API_KEY = 'AIzaSyCJT9qHo_VvALfdxszl7hRerdTIVxzRR_o';
@@ -82,4 +84,20 @@ const handleFromSubmit = (e) => {
 
 }
 
+fileInput.addEventListener('change' , () => {
+    const file = fileInput.files[0]
+    if(!file) return;
+
+    const isImage = file.type.startsWith("image/")
+    const reader = new FileReader();
+    reader.readAsDataURL(file) ;
+
+    reader.onload = (e) => {
+        fileInput.value = "";
+        fileUploadWraper.querySelector('.file-preview').src = e.target.result;
+        fileUploadWraper.classList.add('active' , isImage ? "img-attached" : "file-attached")
+    }
+})
+
 promptForm.addEventListener('submit' , handleFromSubmit);
+promptForm.querySelector("#add-file-btn").addEventListener('click' , () =>  fileInput.click());

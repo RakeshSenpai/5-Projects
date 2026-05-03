@@ -52,8 +52,9 @@
                     <input type="text" placeholder="Ask Gemini" class="prompt-input" required>
                     <div class="prompt-actions">
                         <!-- File Uplaod -->
-                        <div class="file-upload-wraper active file-attached">
-                            <img src="resources/gemini-chatbot-logo.svg" alt="" class="file-preview">
+                        <div class="file-upload-wraper">
+                            <img src="#" alt="" class="file-preview">
+                            <input type="file" accept="image/*, .pdf, .txt, .csv" id="file-input" hidden>
                             <button type="button" class="file-icon material-symbols-rounded">description</button>
 
                             <button id="add-file-btn" type="button" class="material-symbols-rounded">attach_file</button>
